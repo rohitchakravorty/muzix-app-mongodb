@@ -24,8 +24,8 @@ public class TrackController {
         this.trackDAO = trackDAO;
     }
 
-    @PostMapping("/saveTracks")
-	public ResponseEntity<?> saveTracks(@RequestBody List<Track> tracks)
+    @PostMapping("/saveJson")
+	public ResponseEntity<?> saveTracksJson(@RequestBody List<Track> tracks)
 	{
 		ResponseEntity responseEntity;
 		for(Track t1:tracks)
@@ -41,7 +41,7 @@ public class TrackController {
 		return responseEntity;
 	}
 
-	@PostMapping("/saveTrack")
+	@PostMapping("/track")
 	public ResponseEntity<?> saveTrack(@RequestBody Track track)
 	{
 		ResponseEntity responseEntity;
@@ -57,7 +57,7 @@ public class TrackController {
 	}
 
 
-	@PostMapping("/updateTrack/{id}")
+	@PostMapping("/track/{id}")
 	public ResponseEntity<?> updateTrack(@RequestBody Track track)
 	{
 		ResponseEntity responseEntity;
@@ -71,7 +71,7 @@ public class TrackController {
 		}
 		return responseEntity;
 	}
-	@DeleteMapping("/deleteTrack")
+	@DeleteMapping("/track")
 	public ResponseEntity<?> deleteTrack(@RequestBody Track track)
 	{
 
@@ -86,15 +86,11 @@ public class TrackController {
 		}
 		return responseEntity;
 	}
-	@GetMapping("/getAllTracks")
+	@GetMapping("/track")
 	public ResponseEntity<?> getAllUsers() {
 		return new ResponseEntity<>(trackDAO.getAllTracks(), HttpStatus.OK);
 	}
-	@GetMapping("/user")
-	public List<Track> findByTrack(@RequestBody String name)
-	{
-		return  trackDAO.getTrackByName(name);
-	}
+
 
 
 
