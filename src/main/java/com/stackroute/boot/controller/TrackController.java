@@ -1,31 +1,26 @@
 package com.stackroute.boot.controller;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.stackroute.boot.dao.TrackDAO;
+import com.stackroute.boot.services.TrackService;
 import com.stackroute.boot.exception.TrackAlreadyExistsException;
 import com.stackroute.boot.model.Track;
+import com.stackroute.boot.services.TrackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @JsonFilter("hello")
 public class TrackController {
 	@Autowired
-	TrackDAO trackDAO;
+    TrackService trackDAO;
 	//update all the methods with code
 
 
-    public TrackController(TrackDAO trackDAO) {
+    public TrackController(TrackService trackDAO) {
         this.trackDAO = trackDAO;
     }
 
@@ -69,14 +64,14 @@ public class TrackController {
 		try
 		{
 			trackDAO.saveTrack(track);
-			responseEntity = new ResponseEntity("Successfully updated", HttpStatus.CREATED);
+			responseEntity = new ResponseEntity("Successfully updated", HttpStatus.OK);
 		}
 		catch(Exception ex) {
 			responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
 		}
 		return responseEntity;
 	}
-	@RequestMapping("/deleteTrack")
+	@DeleteMapping("/deleteTrack")
 	public ResponseEntity<?> deleteTrack(@RequestBody Track track)
 	{
 

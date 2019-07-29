@@ -5,30 +5,28 @@ import com.stackroute.boot.exception.TrackNotFoundException;
 import com.stackroute.boot.model.Track;
 
 import com.stackroute.boot.repository.TrackRepository;
+import com.stackroute.boot.services.TrackServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-public class TrackDAOImplTest {
+public class TrackServiceImplTest {
     Track track;
     @Mock
     TrackRepository trackRepository;
 
 
     @InjectMocks
-    TrackDAOImpl trackService;
+    TrackServiceImpl trackService;
     List<Track> list= null;
 
 

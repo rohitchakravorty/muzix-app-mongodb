@@ -1,4 +1,4 @@
-package com.stackroute.boot.dao;
+package com.stackroute.boot.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,11 +14,11 @@ import com.stackroute.boot.model.Track;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TrackDAOImpl implements TrackDAO {
+public class TrackServiceImpl implements TrackService {
 
 	@Autowired
 	private TrackRepository trackRepository;
-	public TrackDAOImpl(TrackRepository trackRepository)
+	public TrackServiceImpl(TrackRepository trackRepository)
 	{
 		this.trackRepository = trackRepository;
 	}

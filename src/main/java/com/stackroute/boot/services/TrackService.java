@@ -1,4 +1,4 @@
-package com.stackroute.boot.dao;
+package com.stackroute.boot.services;
 
 
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public interface TrackDAO {
+public interface TrackService {
 
 	public Track saveTrack(Track track) throws TrackAlreadyExistsException;
 
